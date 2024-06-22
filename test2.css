@@ -1,0 +1,81 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.product h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.product p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.panel-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.panel-content.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.panel-inner {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.panel-inner h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.panel-inner p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.description-button, .close-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.description-button:hover, .close-button:hover {
+    background-color: #0056b3;
+}
+
+.close-button {
+    display: block;
+    margin: 20px⬤

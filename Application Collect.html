@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submitted Job Applications</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .application-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #555;
+  }
+
+  .application-item strong {
+    color: #4CAF50;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Submitted Job Applications</h2>
+  <div id="applicationsList">
+    <!-- Application items will be added dynamically here -->
+  </div>
+</div>
+
+<script>
+// Display stored applications on page load
+document.addEventListener('DOMContentLoaded', function() {
+  let applications = JSON.parse(localStorage.getItem('applications')) || [];
+  let applicationsList = document.getElementById('applicationsList');
+
+  applications.forEach(function(application, index) {
+    let applicationItem = document.createElement('div');
+    applicationItem.classList.add('application-item');
+    applicationItem.innerHTML = `
+      <strong>Application ${index + 1}</strong><br>
+      <strong>Name:</strong> ${application.fullName}<br>
+      <strong>Email:</strong> ${application.email}<br>
+      <strong>Discord:</strong> ${application.discord}<br>
+      <strong>Gamertag:</strong> ${application.gamertag}<br>
+      <hr>
+    `;
+    applicationsList.appendChild(applicationItem);
+  });
+});
+</script>
+
+</body>
+</html>

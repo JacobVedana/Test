@@ -1,0 +1,295 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light theme background color */
+    color: #333; /* Light theme text color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+.dark-mode {
+    background-color: #121212; /* Dark theme background color */
+    color: #e0e0e0; /* Dark theme text color */
+}
+
+header {
+    background-image: url('images (8).jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.button-menu {
+    display: inline-block;
+    text-align: left;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #fff;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+    background-color: #ff6347;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+nav ul li .dropdown-content a {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul li .dropdown-content a:hover {
+    background-color: #555;
+}
+
+nav ul li:hover .dropdown-content {
+    display: block;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #444;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.product-details {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    color: purple;
+}
+
+.product-card p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.btn-panel {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.btn-panel button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-panel button:hover {
+    background-color: #45a049;
+}
+
+.additional-info {
+    display: none; /* Initially hide the details */
+    flex-direction: column;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    width: 100%; /* Ensure it takes full width of parent */
+    box-sizing: border-box;
+}
+
+.additional-info img {
+    max-width: 100px; /* Smaller image size */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.additional-info .info-text {
+    width: 100%;
+    text-align: left;
+    color: #fff;
+    padding: 0 1rem; /* Add padding for better text alignment */
+}
+
+.additional-info h3 {
+    color: #ff6347;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.additional-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.additional-info ul li {
+    margin-bottom: 0.5rem;
+  
+}
+
+.additional-info p {
+    margin-top: 1rem
+}
+
+.theme-switcher {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.theme-switcher button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.theme-switcher button:hover {
+    background-color: #555;
+}
+
+/* Dark mode specific styles */
+body.dark-mode {
+    background-color: #121212; /* Dark theme background color */
+    color: #e0e0e0; /* Dark theme text color */
+}
+
+body.dark-mode header {
+    background-image: url('images (8).jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+body.dark-mode header img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+body.dark-mode .button-menu nav {
+    background-color: transparent; /* Remove background color from menu */
+}
+
+body.dark-mode nav a {
+    color: white;
+}
+
+body.dark-mode .dropdown-content {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .btn-panel button {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+body.dark-mode .btn-panel button:hover {
+    background-color: #45a049;
+}
+
+body.dark-mode .additional-info {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .product-card h3 {
+    color: #ffcc00; /* Yellow text color for product names */
+}

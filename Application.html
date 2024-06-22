@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Application Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+  }
+
+  h2 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #fff;
+  }
+
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+  }
+
+  .view-link {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+
+  .view-link:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Staff Application Form</h2>
+  <form id="jobApplicationForm">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="discord">Discord Username</label>
+      <input type="text" id="discord" name="discord" required>
+    </div>
+    <div class="form-group">
+      <label for="gamertag">Gamertag</label>
+      <input type="text" id="gamertag" name="gamertag" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  
+</div>
+
+<script>
+document.getElementById('jobApplicationForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get form values
+  let fullName = document.getElementById('fullName').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let discord = document.getElementById('discord').value.trim();
+  let gamertag = document.getElementById('gamertag').value.trim();
+
+  // Validate form data (basic validation)
+  if (fullName === '' || email === '' || discord === '' || gamertag === '') {
+    alert('Please fill out all fields.');
+    return;
+  }
+
+  // Create application object
+  let application = {
+    fullName: fullName,
+    email: email,
+    discord: discord,
+    gamertag: gamertag
+  };
+
+  // Store application locally
+  let applications = JSON.parse(localStorage.getItem('applications')) || [];
+  applications.push(application);
+  localStorage.setItem('applications', JSON.stringify(applications));
+
+  // Reset form
+  document.getElementById('jobApplicationForm').reset();
+
+  // Notify user and optionally redirect
+  alert('Application submitted successfully!');
+});
+</script>
+
+</body>
+</html>

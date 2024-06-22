@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information Panels</title>
+    <link rel="stylesheet" href="test2.css">
+</head>
+<body>
+    <div class="product">
+        <h2>Product 1</h2>
+        <p class="product-category">Category: Electronics</p>
+        <p class="product-price">Price: $50</p>
+        <p class="product-duration">Duration: 1 year</p>
+        <button class="description-button" onclick="togglePanel(1)">Show Description</button>
+        <div class="panel-content" id="panel-1">
+            <div class="panel-inner">
+                <h3>Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices mauris a turpis dignissim, sed auctor mi posuere.</p>
+                <button class="close-button" onclick="togglePanel(1)">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product">
+        <h2>Product 2</h2>
+        <p class="product-category">Category: Clothing</p>
+        <p class="product-price">Price: $70</p>
+        <p class="product-duration">Duration: N/A</p>
+        <button class="description-button" onclick="togglePanel(2)">Show Description</button>
+        <div class="panel-content" id="panel-2">
+            <div class="panel-inner">
+                <h3>Description</h3>
+                <p>Nulla facilisi. Mauris at faucibus magna. Nullam lacinia interdum leo.</p>
+                <button class="close-button" onclick="togglePanel(2)">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test2.js"></script>
+</body>
+</html>

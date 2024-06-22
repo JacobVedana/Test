@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+/* styles.css */
+
+body {
+    font-family: 'Lucida Console', Monaco, monospace;
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    border: 6px solid transparent;
+    border-image: linear-gradient(45deg, #ff8008, #ffc837) 1;
+    border-image-slice: 1;
+    z-index: -1;
+    animation: animate-border 5s linear infinite;
+}
+
+@keyframes animate-border {
+    0% {
+        border-image-source: linear-gradient(45deg, #ff8008, #ffc837);
+    }
+    50% {
+        border-image-source: linear-gradient(135deg, #ff8008, #ffc837);
+    }
+    100% {
+        border-image-source: linear-gradient(45deg, #ff8008, #ffc837);
+    }
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+h2, h3 {
+    color: #ffc107;
+    text-shadow: 1px 1px 3px #000;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Lucida Console', Monaco, monospace;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #ff8008, #ffc837) 1;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.choices-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.choices-container button {
+    background-color: #6c757d;
+    margin: 10px;
+    flex: 1 1 calc(33% - 20px); /* Three buttons per row */
+    box-sizing: border-box;
+}
+
+.choices-container button:hover {
+    background-color: #495057;
+}
+
+.show {
+    display: block;
+}
+
+.rule-box {
+    background-color: #444;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    text-align: left;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.rule-box::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    border: 4px solid transparent;
+    border-image: linear-gradient(45deg, #ff8008, #ffc837) 1;
+    border-image-slice: 1;
+    z-index: -1;
+    animation: animate-border 5s linear infinite;
+}
+
+.rule-box:hover {
+    transform: scale(1.05);
+}
+</style>
+<script>
+// script.js
+
+function showChoices() {
+    document.getElementById('topic').classList.add('hidden');
+    document.getElementById('content').classList.add('hidden');
+    document.getElementById('choices').classList.remove('hidden');
+}
+
+function showGeneralGuides() {
+    hideChoices();
+    document.getElementById('guide-box').classList.remove('hidden');
+    document.getElementById('guide-title').textContent = '';
+    document.getElementById('guide-content').innerHTML = `
+        <div class="rule-box">
+        <p><strong>Gather Evidence:</strong> Capture screenshots, record videos, or save chat logs to document the violation clearly.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Contact Staff:</strong> Report the violation to a server staff member, providing all evidence and relevant details.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Avoid Conflict:</strong> Refrain from arguing directly with the violator. Let server staff manage the situation for a fair resolution.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Create a Discord Ticket:</strong> Use the ticket system to report violations
+  Head to the ⁠ticket channel.
+  Create a new ticket and provide details and evidence.
+  Wait for staff to respond to your ticket.
+ </p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Cooperate with Staff:</strong> Work with staff members during their investigation, being honest and providing requested information.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Respect Privacy:</strong> Maintain privacy for all involved parties; avoid sharing personal details or engaging in public shaming.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>Follow Up:</strong> After resolution, check with staff to ensure appropriate action has been taken and the issue resolved satisfactorily.</p>
+        </div>
+    `;
+    document.getElementById('content').classList.remove('hidden');
+}
+
+function showSurvivalGuides() {
+    hideChoices();
+    document.getElementById('guide-box').classList.remove('hidden');
+    document.getElementById('guide-title').textContent = 'Survival Guides';
+    document.getElementById('guide-content').innerHTML = `
+        <div class="choices-container">
+            <button onclick="showTeamCommands()">Team Commands</button>
+            <button onclick="showBasicCommands()">Basic Commands</button>
+        </div>
+    `;
+    document.getElementById('content').classList.remove('hidden');
+}
+
+function showTeamCommands() {
+    document.getElementById('guide-title').textContent = '';
+    document.getElementById('guide-content').innerHTML = `
+        <h1>Team Management</h1>
+        <div class="rule-box">
+            <p><strong>/team create [team name]:</strong> Establish your squad with a unique name using this command.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team invite [player]:</strong> Recruit new members to strengthen your team.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team kick [player]:</strong> Use this command to remove troublemakers or inactive players from your team.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team promote [player]:</strong> Grant trusted members higher team permissions.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team demote [player]:</strong> Revoke elevated permissions from team members if necessary.</p>
+        </div>
+        <h1>Economy</h1>
+        <div class="rule-box">
+            <p><strong>/team balance:</strong> Knowledge is power! Check the current amount of cash stored in the team's bank.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team deposit [amount]:</strong> Share the wealth! Contribute your cash to the team's bank for shared resources.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team withdraw [amount]:</strong>Access the team's funds! Withdraw cash from the bank for approved team purposes.</p>
+        </div>
+              
+        <h1>Communication and Navigation</h1>
+              
+        <div class="rule-box">
+            <p><strong>/team name [new name]:</strong> Rebrand your team! Change your team's name for more fearsome identity.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team setwarp [name]:</strong> Establish a secret warp point only accessible by your team. </p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team warp [name]:</strong> Teleport to your team's hidden warp point. </p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team delwarp [name]:</strong> Remove access to your team's warp point if needed.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team sethome:</strong> Set a central home location for your team to regroup.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team home:</strong> Teleport to your team's designated home base.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team chat [message]:</strong> Strategize in secret! Send private messages to all team members.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team allychat [message]:</strong> Broaden your network! Chat with members of allied teams (if applicable) for coordinated efforts.</p>
+        </div>
+        <div class="rule-box">
+            <p><strong>/team pvp [on/off]:</strong> United front or friendly fire? Enable or disable friendly fire within your team (use responsibly).</p>
+        </div>
+        <h1>Shared Storage</h1>
+        <div class="rule-box">
+            <p><strong>/team echest:</strong> Access the team ender chest to store valuable resources shared amongst your team.</p>
+        </div>
+    `;
+}
+
+function showBasicCommands() {
+    document.getElementById('guide-title').textContent = 'Basic Commands';
+    document.getElementById('guide-content').innerHTML = `
+        <h1>Teleport</h1>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/rtp:</strong> Use this command to be teleported to a random location, perfect for exploring uncharted territories!</p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/homes:</strong> Use this command to manage your homes. </p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/sethome [name]:</strong> Establish your base! Use this command to save your base location and quickly return with /home</p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/delhome [name]:</strong> Need to relocate? Delete your home with this command. Remember, you can only have limited home slots so make sure to use them wisely!</p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/spawn [name]:</strong> This trusty command warps you back to the server's spawn point, a familiar starting point. </p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/tpa [player name]:</strong> Use this command to request teleportation to another player in the server.</p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/tpaccept [player name]:</strong> This allows you to accept a teleportation request from another player.</p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/tpahere [player name]</strong> This allows you to send a teleportation request to another player. </p>
+        </div>
+        <div class="rule-box">
+            <b>Teleport</b>
+            <p><strong>/warp or /warp [name]</strong> Use either of these commands to navigate quickly to pre-define locations in the server. </p>
+        </div>
+        <h1>Utilities</h1>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/baltop</strong> Curious about the  richest players in the server? See the top in-game balances with this command. </p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/daily</strong> We prepared daily treats for you! Clam you daily reward using this command.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/discord</strong> Stay connected! Join the server's vibrant community by clicking the link provided through /discord, where you can find updates, announcements, and connect with other players.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/list</strong> Who's online? This command allows you to see a list of currently online players.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/msg [player name] [message]</strong> Send private messages to another player using this command. Reply to previous messages with /reply [player name].</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/pay [player name [amount]</strong> Feeling generous? Send money to another player with this command.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/rank</strong> Use this command to view the rank list.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/rules</strong> This command displays the server's rules, ensuring a smooth and enjoyable experience for everyone. Make sure to READ and FOLLOW them.</p>
+        </div>
+        <div class="rule-box">
+            <b>Utilities</b>
+            <p><strong>/vote</strong> Show your support and gain benefits by voting for our server!</p>
+        </div>
+        <h1>Economy</h1>
+        <div class="rule-box">
+            <b>Economy</b>
+            <p><strong>/ah</strong> Want to trade with others? This command allows you to view the auction house where people sel items. </p>
+        </div>
+        <div class="rule-box">
+            <b>Economy</b>
+            <p><strong>/ah sell</strong> This allows you to sell items in the auction house (NOTE: applicable to those with ELITE rank and above only)</p>
+        </div>
+        <div class="rule-box">
+            <b>Economy</b>
+            <p><strong>/jobs [browse/join/leave/leaveall]</strong> Earn a living: learn about available jobs, join one, and manage your job with this command. </p>
+        </div>
+        <div class="rule-box">
+            <b>Economy</b>
+            <p><strong>/store</strong> Upgrade your experience! Browse the server store with this command to purchase premium ranks, or crate keys (supporting future server development).</p>
+        </div>
+        <h1>Claim Management</h1>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/abandonallclaims</strong> Need a fresh start? Using this command will allow you to abandon all your claims all at once. Use this carefully! </p>
+        </div>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/buyclaimblocks</strong> Want to expand your claim, but you ran out of claim blocks? Fear not! Buy claim blocks with this command. </p>
+        </div>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/createclaims</strong> Protect your builds! Create a land claims to safeguard your property, it's better to be safe than sorry.</p>
+        </div>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/transferclaim [player name]</strong>Transfer land claims to another player with this command. </p>
+        </div>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/trust [player name]</strong> Build Trust with friends! Use this command to grant them access to your claimed areas. Be careful, don't trust anyone so easily!</p>
+        </div>
+        <div class="rule-box">
+            <b>Claim Management</b>
+            <p><strong>/trapped</strong> If you find yourself trapped in a block or area, use this command to free yourself. </p>
+        </div>
+    `;
+}
+
+function showMainMenu() {
+    hideChoices();
+    document.getElementById('guide-box').classList.remove('hidden');
+    document.getElementById('guide-title').textContent = '☰ Menu';
+    document.getElementById('guide-content').innerHTML = `
+        <div class="choices-container">
+            <a href="Home.html"><button>Home</button></a>
+            <a href="Contact.html"><button>Contact</button></a>
+            <a href="Categories.html"><button>Shop</button></a>
+            <a href="Application.html"><button>Staff Application</button></a>
+        </div>
+    `;
+    document.getElementById('content').classList.remove('hidden');
+}
+
+function hideChoices() {
+    document.getElementById('choices').classList.add('hidden');
+}
+
+function hideContent() {
+    document.getElementById('content').classList.add('hidden');
+    document.getElementById('guide-box').classList.add('hidden');
+}
+</script>
+<body>
+    <div class="container">
+        <h1>Help Center</h1>
+        <div id="topic">
+            <h2>Dark Continent</h2>
+            <button onclick="showChoices()">Show More</button>
+        </div>
+        <div id="choices" class="hidden">
+            <button onclick="showGeneralGuides()">General Guides</button>
+            <button onclick="showSurvivalGuides()">Survival Guides</button>
+            <button onclick="showMainMenu()">☰ Menu</button>
+        </div>
+        <div id="content" class="hidden">
+            <div id="guide-box" class="hidden">
+                <h3 id="guide-title"></h3>
+                <div id="guide-content"></div>
+                <button onclick="showChoices()">Back</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Continent Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            box-sizing: border-box;
+        }
+  
+        header {
+            background-image: url('images (8).jpeg');
+            background-size: #fff;
+            background-position: 20px;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+  
+        header img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+header .menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+nav {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+}
+
+nav.hidden {
+    display: none;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 10px 0;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        .product-details {
+            background-color: #1e1e1e;
+            padding: 1rem;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            margin: 0;
+            margin-bottom: 0.5rem;
+        }
+        .product-card p {
+            margin: 0;
+            margin-bottom: 0.5rem;
+
+        }
+        .additional-info {
+            background-color: #2a2a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+<script>
+function toggleMenu() {
+    var menu = document.getElementById("nav-menu");
+    if (menu.classList.contains("hidden")) {
+        menu.classList.remove("hidden");
+    } else {
+        menu.classList.add("hidden");
+    }
+}
+</script>
+</head>
+<body>
+    <header>
+      <img src="FB_IMG_1718136041783.jpg" alt"error">
+        <h1><p style="color:rebeccapurple;">Dark Home</p></h1>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776; Menu</div>
+    </header>
+    <nav id="nav-menu" class="hidden">
+        <ul>
+            <li><a href="Contact.html">☏ Contact</a></li>
+            <li><a href="Categories.html">₱ Shop</a></li>
+            <li><a href="Application.html">⌨ Staff Application</a></li>
+            <li><a href="Media.html">▶ Media Application</a></li>
+            <li><a href="Help.html">⊜ Help</a></li>
+            <li><a href="https://discord.com/invite/wTMJFRTu5v"><img src="download (2).png" width="40"></a></li>
+       </ul>
+    </nav>
+    <div class="card product-card">
+      <div class="product-details">
+        <section id="home">
+            <img src="1718141681376.jpeg" alt"error">
+          <h3>Welcome to Dark Continent Store!</h3>
+          <li>What epic adventures await you today?</li>
+          <br>
+          <li>Browse our store and discover amazing items and upgrades to take 
+your gameplay to the next level. Gear up, and join the fun!</li>
+          <h4>Frequently Asked Questions:</h4>
+       </section>
+     <div class="card product-card">
+      <div class="product-details">
+       <section id="ask">
+          <li>Am I allowed to buy something for other players?</li>
+         <br>
+          <p>Yes, you may purchase gifts for other players, however please do note that the original cardholder is always responsible for the purchase.</p>
+         <li>Can I buy something for cracked accounts?</li>
+         <br>
+         <p>Yes, you may purchase something for cracked accounts.</p>
+         <br>
+         <li>What should I do if I did not receive the product/s i purchased?</li>
+         <br>
+         <p>It takes a few moments before our staff team processes your purchase. Make sure to create a webstore ticket on our discord and provide the proof of payment for a smoother transaction.</p>
+         <br>
+         <li>Can I get a refund?</li>
+         <br>
+         <p>No, payments are absolutely final and fall under a "no refund policy". In case of technical issues, an exception might be made. Please contact us if you believe this is the case.</p>
+       </section>
+    </div>
+    <footer></footer>
+</body>
+</html>
